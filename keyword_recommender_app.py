@@ -25,13 +25,13 @@ df = df.dropna(subset=['ad_group_criterion_keyword_text', 'country'])
 st.title("🔍 Keyword Recommender (Multilingual + Performance Based)")
 
 # Sidebar filters
-available_metrics = ['conversions', 'ctr', 'clicks', 'impressions', 'cost_per_conversion']
+available_metrics = ['conversions', 'ctr', 'clicks', 'impressions', 'cost_per_conversion','conversions_from_interactions_rate']
 available_countries = sorted(df['country'].dropna().unique().tolist())
 
 performance_metric = st.selectbox("📊 Choose Performance Metric", available_metrics)
 country_filter_list = st.multiselect("🌍 Choose Countries", available_countries, default=available_countries[:3])
 user_keyword = st.text_input("💡 Enter a Keyword", "download")
-top_n = st.slider("🔝 Number of Recommendations", 1, 10, 5)
+top_n = st.slider("🔝 Number of Recommendations", 1, 20, 5)
 
 if st.button("Generate Recommendations"):
     
@@ -49,7 +49,8 @@ if st.button("Generate Recommendations"):
             'ctr': 'mean',
             'clicks': 'sum',
             'impressions': 'sum',
-            'cost_per_conversion': 'mean'
+            'cost_per_conversion': 'mean',
+            'conversions_from_interactions_rate': 'mean'
         })
 
         user_embedding = model.encode(user_keyword, convert_to_tensor=True)
