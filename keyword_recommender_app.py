@@ -72,7 +72,7 @@ if st.button("Generate Recommendations"):
         df_grouped = df_grouped.sort_values(by='combined_score', ascending=False)
 
         display_cols = ['ad_group_criterion_keyword_text', performance_metric, 'similarity', 'combined_score']
-        if country_filter_list:
+        if country_filter_list and 'ALL' not in country_filter_list and 'MULTIPLE' not in country_filter_list:
             display_cols.append('country')
 
         return df_grouped[display_cols].head(top_n)
