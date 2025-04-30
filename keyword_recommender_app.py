@@ -25,7 +25,7 @@ df = df.dropna(subset=['ad_group_criterion_keyword_text', 'country'])
 st.title("🔍 Keyword Recommender (Multilingual + Performance Based)")
 
 # Sidebar filters
-available_metrics = ['conversions', 'ctr', 'clicks', 'impressions', 'cost_per_conversion']
+available_metrics = ['conversions', 'ctr', 'clicks', 'impressions', 'cost_per_conversion','conversions_from_interactions_rate']
 available_countries = sorted(df['country'].dropna().unique().tolist())
 
 performance_metric = st.selectbox("📊 Choose Performance Metric", available_metrics)
