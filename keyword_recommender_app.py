@@ -31,7 +31,7 @@ available_countries = sorted(df['country'].dropna().unique().tolist())
 performance_metric = st.selectbox("📊 Choose Performance Metric", available_metrics)
 country_filter_list = st.multiselect("🌍 Choose Countries", available_countries, default=available_countries[:3])
 user_keyword = st.text_input("💡 Enter a Keyword", "download")
-top_n = st.slider("🔝 Number of Recommendations", 1, 10, 5)
+top_n = st.slider("🔝 Number of Recommendations", 1, 20, 5)
 
 if st.button("Generate Recommendations"):
     
