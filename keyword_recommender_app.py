@@ -49,7 +49,8 @@ if st.button("Generate Recommendations"):
             'ctr': 'mean',
             'clicks': 'sum',
             'impressions': 'sum',
-            'cost_per_conversion': 'mean'
+            'cost_per_conversion': 'mean',
+            'conversions_from_interactions_rate': 'mean'
         })
 
         user_embedding = model.encode(user_keyword, convert_to_tensor=True)
