@@ -79,7 +79,7 @@ if st.button("Generate Recommendations"):
 
     results = recommend_keywords(user_keyword, performance_metric, country_filter_list, top_n)
     results['similarity'] = results['similarity'].round(4)
-    results[performance_metric] = results[performance_metric].astype(int)
+    results[performance_metric] = results[performance_metric].astype("float64")
     
     st.subheader("✅ Top Keyword Suggestions")
     st.dataframe(results)
