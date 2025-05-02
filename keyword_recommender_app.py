@@ -43,7 +43,7 @@ if st.button("Generate Recommendations"):
 
         df_filtered = df_filtered.dropna(subset=[performance_metric])
 
-        group_cols = ['ad_group_criterion_keyword_text'] if not country_filter_list or 'MULTIPLE' in country_filter_list else ['ad_group_criterion_keyword_text', 'country']
+        group_cols = ['ad_group_criterion_keyword_text'] #if not country_filter_list and 'MULTIPLE' in country_filter_list else ['ad_group_criterion_keyword_text', 'country']
         df_grouped = df_filtered.groupby(group_cols, as_index=False).agg({
             'conversions': 'sum',
             'ctr': 'mean',
@@ -72,8 +72,8 @@ if st.button("Generate Recommendations"):
         df_grouped = df_grouped.sort_values(by='combined_score', ascending=False)
 
         display_cols = ['ad_group_criterion_keyword_text', performance_metric, 'similarity', 'combined_score']
-        if country_filter_list:
-            display_cols.append('country')
+        #if country_filter_list and 'ALL' not in country_filter_list and 'MULTIPLE' not in country_filter_list:
+        #    display_cols.append('country')
 
         return df_grouped[display_cols].head(top_n)
 
